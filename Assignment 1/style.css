@@ -28,6 +28,7 @@ th,
 td {
     border: 2px solid wheat;
     padding: 10px;
+    min-width: 10em;
     /* text-align: center; */
 }
 
@@ -42,9 +43,8 @@ tr td:nth-child(1) {
 
 /* =============================Data fields============================== */
 
-#data input {
-    padding: 10px;
-    width: 10em;
+input {
+    width: 8em;
 }
 
 
