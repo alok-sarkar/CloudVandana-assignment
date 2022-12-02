@@ -43,8 +43,9 @@ tr td:nth-child(1) {
 
 /* =============================Data fields============================== */
 
-input {
+input[type=text] {
     width: 8em;
+    background-color: burlywood;
 }
 
 
@@ -52,21 +53,4 @@ input {
 
 button {
     padding: 10px;
-}
-
-
-/* Warning */
-
-#snackbar {
-    display: none;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-}
-
-
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-
-#snackbar.show {
-    display: block;
 }

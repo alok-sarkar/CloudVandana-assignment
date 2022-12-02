@@ -2,12 +2,12 @@ let topAddButton = document.querySelector("#addTopBtn");
 let bottomAddButton = document.querySelector("#addBottomBtn");
 let saveButton = document.querySelector("#saveDataBtn");
 let cancelButton = document.querySelector("#cancelBtn");
-
-
 let table = document.querySelector("table").getElementsByTagName("tbody")[0];
 
 saveButton.style.display = "none";
 cancelButton.style.display = "none";
+
+
 topAddButton.addEventListener('click', () => {
     addRow(table.insertRow(0), 1);
     var rows = table.children;
@@ -27,19 +27,26 @@ saveButton.addEventListener('click', () => {
     let l_name = document.querySelector("#l_name").value.trim();
     let city = document.querySelector("#city").value.trim();
     let country = document.querySelector("#country").value.trim();
-    for (let i = 0; i < table.childElementCount; i++) {
-        var rows = table.children;
-        if (rows[i].classList.contains("editable")) {
-            var cols = rows[i].children;
-            cols[1].innerHTML = f_name;
-            cols[2].innerHTML = l_name;
-            cols[3].innerHTML = city;
-            cols[4].innerHTML = country;
-            rows[i].classList.remove();
-        }
+    if (f_name === "" && l_name === "" && city === "" && country === "") {
+        emptyValueWarning();
 
+    } else {
+        for (let i = 0; i < table.childElementCount; i++) {
+            var rows = table.children;
+            if (rows[i].classList.contains("editable")) {
+                var cols = rows[i].children;
+                cols[1].innerHTML = f_name;
+                cols[2].innerHTML = l_name;
+                cols[3].innerHTML = city;
+                cols[4].innerHTML = country;
+                rows[i].classList.remove("editable");
+            }
+
+        }
+        toglleButtons();
     }
-    toglleButtons();
+
+
 });
 cancelButton.addEventListener('click', () => {
     var deleted = 0;
@@ -75,17 +82,7 @@ function toglleButtons() {
 
 
 }
-// function addRow(row, sl_no) {
-//     row.insertCell(0).innerHTML = sl_no;
-//     row.insertCell(1).innerHTML = f_name.value.trim();
-//     row.insertCell(2).innerHTML = l_name.value.trim();
-//     row.insertCell(3).innerHTML = city.value.trim();
-//     row.insertCell(4).innerHTML = country.value.trim();
-//     f_name.value = "";
-//     l_name.value = "";
-//     city.value = "";
-//     country.value = "";
-// }
+
 function addRow(row, sl_no) {
     row.classList.add("editable");
     row.insertCell(0).innerHTML = sl_no;
